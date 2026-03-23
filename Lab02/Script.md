@@ -279,6 +279,61 @@ npm run dev
 
 ---
 
+### Kết quả thực tế (theo ảnh test)
+
+1. `localhost:3000/api/v1/movies`
+    - Trả về JSON danh sách phim (trang mặc định).
+    - Mẫu kết quả đầu tiên thấy trong ảnh: **"The Great Train Robbery"**.
+
+2. `localhost:3000/api/v1/movies?page=1`
+    - Trả về dữ liệu trang tiếp theo.
+    - Mẫu kết quả đầu tiên thấy trong ảnh: **"Miss Lulu Bett"**.
+
+3. `localhost:3000/api/v1/movies?rated=PG`
+    - Trả về danh sách phim có `rated = "PG"`.
+    - Mẫu kết quả đầu tiên thấy trong ảnh: **"The Adventures of Robin Hood"**.
+
+4. `localhost:3000/api/v1/movies?title=Blacksmith`
+    - Trả về danh sách phim theo bộ lọc `title` (text search).
+    - Mẫu kết quả thấy trong ảnh: **"The Man with the Iron Fists"**.
+
+5. `localhost:3000/abc`
+    - Trả về lỗi 404 JSON:
+
+```json
+{ "error": "not found" }
+```
+
+> Ghi chú: Kết quả hiển thị đúng với logic route/controller/DAO đã cài đặt.
+
+---
+
+## Ảnh kết quả test URL
+
+> Đặt ảnh vào thư mục `Lab02/images/` với đúng tên file bên dưới để Markdown hiển thị trực tiếp.
+
+### 1) `GET /api/v1/movies`
+
+![Kết quả GET /api/v1/movies](./images/lab02-url-1-movies.png)
+
+### 2) `GET /api/v1/movies?page=1`
+
+![Kết quả GET /api/v1/movies?page=1](./images/lab02-url-2-page-1.png)
+
+### 3) `GET /api/v1/movies?rated=PG`
+
+![Kết quả GET /api/v1/movies?rated=PG](./images/lab02-url-3-rated-pg.png)
+
+### 4) `GET /api/v1/movies?title=Blacksmith`
+
+![Kết quả GET /api/v1/movies?title=Blacksmith](./images/lab02-url-4-title-blacksmith.png)
+
+### 5) `GET /abc` (404)
+
+![Kết quả GET /abc](./images/lab02-url-5-404.png)
+
+---
+
 ## Luồng hoạt động
 
 ```
