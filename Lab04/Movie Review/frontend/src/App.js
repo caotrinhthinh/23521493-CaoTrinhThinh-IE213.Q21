@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Routes, Route } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -35,6 +35,14 @@ function App() {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
+
+      <Routes>
+        <Route path="/" element={<MoviesList />} />
+        <Route path="/movies" element={<MoviesList />} />
+        <Route path="/movies/:id" element={<Movie user={user} />} />
+        <Route path="/movies/:id/review" element={<AddReview user={user} />} />
+        <Route path="/login" element={<Login login={login} />} />
+      </Routes>
     </div>
   );
 }
