@@ -16,17 +16,19 @@ export default class MoviesDAO {
     }
 
     static async getMovies({ filters = null, page = 0, moviesPerPage = 20 } = {}) {
-        let query;
+        let query = {};
         if (filters) {
             if ('title' in filters) {
-                query = { $text: { $search: filters.title } };
-            } else if ('rated' in filters) {
-                query = { rated: { $eq: filters.rated } };
+                query.title = { $regex: filters.title, $options: 'i' };
+            }
+            if ('rated' in filters) {
+                query.rated = { $eq: filters.rated };
             }
         }
 
         let cursor;
         try {
+            console.log("MoviesDAO query:", query);
             cursor = await movies
                 .find(query)
                 .limit(moviesPerPage)
